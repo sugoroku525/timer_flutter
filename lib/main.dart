@@ -3,7 +3,9 @@ import 'package:intl/intl.dart';
 import 'dart:async';
 
 void main() {
-  runApp(Stop());
+  runApp(MaterialApp(
+    home:Stop(),
+  ));
 }
 
 class Stop extends StatefulWidget{
@@ -11,34 +13,48 @@ class Stop extends StatefulWidget{
   _StopState createState()=>_StopState();
 }
 class _StopState extends State<Stop> {
-  String _time='';
   var _timer;
+  var _time;
   @override
 
   void initState(){
-   _timer = Timer.periodic(Duration(seconds:1),_onTimer,);
+   _time = DateTime.utc(0,0,0);
     super.initState();
   }
-  void dispose(){
-    _timer.cancel();
-    super.dispose();
-  }
-  void _onTimer(Timer timer){
-    var now=DateTime.now();
-    var formatter = DateFormat('HH:mm:ss');
-    var formattedTime = formatter.format(now);
-    setState(()=>_time = formattedTime);
-  }
+
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        _time,
-        style: TextStyle(
-          fontSize: 60.0,
-          
-        )
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+
+        children: <Widget>[
+          Text(
+            DateFormat.Hms().format(_time),
+              style: Theme.of(context).textTheme.headline2,
+              ),
+          Row(
+            mainAxisAlignment:MainAxisAlignment.center,
+            children: <Widget>[
+              FloatingActionButton(onPressed:(){
+                if(_timer !=null && _timer.isActive)_timer.cancel();
+              } ,
+              child:Text("Stop"),),
+              FloatingActionButton(onPressed: (){
+                _timer  = Timer.periodic(Duration(seconds:1),
+                (Timer timer){
+                  setState((){
+                    _time = _time.add(Duration(seconds:1));
+                  });
+                }
+                );
+              }
+              ,child:Text("Start"),
+              )
+          ],)
+
+        ]
       ),
     );
   }

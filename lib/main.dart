@@ -2,19 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
 
+import 'package:stop_flutter/nextpage.dart';
+import 'package:stop_flutter/shutdownpage.dart';
+import 'nextpage.dart';
+import 'shutdownpage.dart';
+
 void main() {
   runApp(MaterialApp(
-    home:Stop(),
+    initialRoute:Stop.id,
+    routes:{
+      Stop.id:(context)=>Stop(),
+      NextPage.id:(context)=>NextPage(),
+      ShutdownPage.id:(context)=>ShutdownPage()
+    }
   ));
 }
 
 class Stop extends StatefulWidget{
+  static const String id = 'Stop';
   @override 
   _StopState createState()=>_StopState();
 }
 class _StopState extends State<Stop> {
   var _timer;
-  var _time;
   var _currentSeconds;
   @override
 
@@ -28,7 +38,7 @@ class _StopState extends State<Stop> {
   void initState(){
     super.initState();
     final workMinuts = 0;
-    _currentSeconds = workMinuts * 60+30;
+    _currentSeconds = workMinuts * 60+3;
     _timer = countTimer();
   }
   Timer countTimer(){
@@ -37,6 +47,7 @@ class _StopState extends State<Stop> {
       (Timer timer){
         if(_currentSeconds<1){
           timer.cancel();
+          Navigator.pushNamed(context, NextPage.id);
         }
         else{
           setState((){
@@ -53,11 +64,16 @@ class _StopState extends State<Stop> {
         mainAxisAlignment: MainAxisAlignment.start,
 
         children: <Widget>[
+          SizedBox(height:140.0),
+          Text('ゆっくりと呼吸をしよう',style:TextStyle(fontSize: 30.0,color: Colors.blue)),
+           SizedBox(height:80.0),
           const SizedBox(height:16),
           _timeStr(),
+    
           const SizedBox(height:16),
           _panel(),
-          
+          SizedBox(height:50.0),
+          Text('自分の内面か周囲に意識を向けよう',style:TextStyle(fontSize: 30.0,color: Colors.blue)),
 
         ]
       ),
@@ -68,7 +84,7 @@ class _StopState extends State<Stop> {
   Widget _timeStr(){
     return Text(
       timeString(_currentSeconds),
-      style:TextStyle(fontSize: 32,color: Colors.black),
+      style:TextStyle(fontSize: 70,color: Colors.black),
     );
   }
   String timeString(int leftSeconds){
@@ -84,18 +100,23 @@ class _StopState extends State<Stop> {
             if(_timer.isActive){
               _timer.cancel();
             }
-          }, icon: Icon(Icons.stop)) ,
+          }, 
+          iconSize: 40.0,
+          icon: Icon(Icons.pause)) ,
           IconButton(onPressed:(){
             if(!_timer.isActive){
               setState(() {
                 _timer = countTimer();
               });}},
+          iconSize: 40.0,
            icon: Icon(Icons.play_arrow)) ,
            IconButton(onPressed: (){
              setState((){
                _currentSeconds = 30;
              });
-           }, icon:Icon(Icons.restart_alt))
+           }, 
+           iconSize: 40.0,
+           icon:Icon(Icons.restart_alt))
   
       ],);
   }

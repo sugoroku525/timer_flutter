@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
-
 import 'package:stop_flutter/nextpage.dart';
 import 'package:stop_flutter/shutdownpage.dart';
 import 'nextpage.dart';
@@ -23,6 +22,7 @@ class Stop extends StatefulWidget{
   @override 
   _StopState createState()=>_StopState();
 }
+
 class _StopState extends State<Stop> {
   var _timer;
   var _currentSeconds;
@@ -38,9 +38,10 @@ class _StopState extends State<Stop> {
   void initState(){
     super.initState();
     final workMinuts = 0;
-    _currentSeconds = workMinuts * 60+3;
+    _currentSeconds = workMinuts * 60+30;
     _timer = countTimer();
   }
+
   Timer countTimer(){
     return Timer.periodic(
       const Duration(seconds:1),
@@ -57,7 +58,9 @@ class _StopState extends State<Stop> {
       }
     );
   }
+
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SafeArea(
         child:Column(
@@ -65,7 +68,10 @@ class _StopState extends State<Stop> {
 
         children: <Widget>[
           SizedBox(height:140.0),
-          Text('ゆっくりと呼吸をしよう',style:TextStyle(fontSize: 30.0,color: Colors.blue)),
+
+         
+            Text('もう一度',style: TextStyle(fontSize:26.0,color: Colors.blue ),),
+         Text('ゆっくりと呼吸をしよう',style:TextStyle(fontSize: 26.0,color: Colors.blue)),
            SizedBox(height:80.0),
           const SizedBox(height:16),
           _timeStr(),
@@ -73,7 +79,7 @@ class _StopState extends State<Stop> {
           const SizedBox(height:16),
           _panel(),
           SizedBox(height:50.0),
-          Text('自分の内面か周囲に意識を向けよう',style:TextStyle(fontSize: 30.0,color: Colors.blue)),
+          Text('自分の内面か周囲に意識を向けよう',style:TextStyle(fontSize: 23.0,color: Colors.blue)),
 
         ]
       ),
@@ -97,33 +103,28 @@ class _StopState extends State<Stop> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         IconButton(onPressed: (){
+          setState(() {
             if(_timer.isActive){
-              _timer.cancel();
-            }
+            _timer.cancel();
+          }
+          else{
+            _timer = countTimer();
+          }
+          });
+          
+        }, 
+          iconSize: 40.0,
+          icon: _timer.isActive? Icon(Icons.pause):Icon(Icons.play_arrow)),
+        IconButton(onPressed: (){
+          setState((){
+              _currentSeconds = 30;
+            });
           }, 
           iconSize: 40.0,
-          icon: Icon(Icons.pause)) ,
-          IconButton(onPressed:(){
-            if(!_timer.isActive){
-              setState(() {
-                _timer = countTimer();
-              });}},
-          iconSize: 40.0,
-           icon: Icon(Icons.play_arrow)) ,
-           IconButton(onPressed: (){
-             setState((){
-               _currentSeconds = 30;
-             });
-           }, 
-           iconSize: 40.0,
-           icon:Icon(Icons.restart_alt))
+          icon:Icon(Icons.restart_alt))
   
       ],);
   }
+
+
 }
-
-
-
-
-
-  

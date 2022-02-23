@@ -79,7 +79,7 @@ class _StopState extends State<Stop> {
           const SizedBox(height:16),
           _panel(),
           SizedBox(height:50.0),
-          Text('自分の内面か周囲に意識を向けよう',style:TextStyle(fontSize: 23.0,color: Colors.blue)),
+          Text('自分の内面か周囲に意識を向けよう',style:TextStyle(fontSize: 23.0,color: Colors.red)),
 
         ]
       ),

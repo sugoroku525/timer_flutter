@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
-
+import 'stop2.dart';
 import 'package:stop_flutter/main.dart';
 import 'package:stop_flutter/shutdownpage.dart';
 
@@ -52,7 +52,7 @@ class NextPage extends StatelessWidget {
               child: TextButton(
                 style: TextButton.styleFrom(backgroundColor: Colors.blue),
                 onPressed:(){
-                  Navigator.pushNamed(context, Stop.id);
+                  Navigator.pushNamed(context, Stop2.id);
                 } ,
               child: Text('いいえ',style:TextStyle(color: Colors.white,fontSize: 15),),),
             )

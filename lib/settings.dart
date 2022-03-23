@@ -1,5 +1,7 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
-
+import 'package:admob_flutter/admob_flutter.dart';
+import 'services/admob.dart';
 
 class Settings extends StatelessWidget {
   static const String id = 'Settings';
@@ -19,6 +21,11 @@ class Settings extends StatelessWidget {
             _menuItem("今後追加したい機能", Icon(Icons.self_improvement)),
             _menuItem("不具合、要望、感想など", Icon(Icons.sentiment_satisfied_alt)),
           ]
+        ),
+      bottomNavigationBar: 
+          AdmobBanner(
+          adUnitId: AdMobService().getBannerAdUnitId()!,
+        adSize: AdmobBannerSize.BANNER,
         ),
       
     );

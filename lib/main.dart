@@ -8,8 +8,12 @@ import 'nextpage.dart';
 import 'shutdownpage.dart';
 import 'stop.dart';
 import 'stop2.dart';
+import 'package:admob_flutter/admob_flutter.dart';
+
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Admob.initialize();
   runApp(MaterialApp(
     theme: ThemeData(
     brightness: Brightness.light,

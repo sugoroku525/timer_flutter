@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
-import 'package:stop_flutter/nextpage.dart';
-import 'package:stop_flutter/settings.dart';
-import 'package:stop_flutter/shutdownpage.dart';
-import 'nextpage.dart';
-import 'shutdownpage.dart';
-import 'stop.dart';
-import 'stop2.dart';
-import 'package:admob_flutter/admob_flutter.dart';
+import 'package:stop_flutter/pages/question_page.dart';
+import 'package:stop_flutter/pages/settings/settings_page.dart';
+import 'package:stop_flutter/pages/shutdown_page.dart';
+import 'pages/question_page.dart';
+import 'pages/shutdown_page.dart';
+import 'pages/stop_page.dart';
+import 'pages/stop2_page.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'pages/settings/use_page.dart';
 
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Admob.initialize();
+  MobileAds.instance.initialize();
   runApp(MaterialApp(
     theme: ThemeData(
     brightness: Brightness.light,
@@ -23,9 +24,10 @@ void main() {
     routes:{
       Stop.id:(context)=>Stop(),
       Stop2.id:(context)=>Stop2(),
-      NextPage.id:(context)=>NextPage(),
+      QuestionPage.id:(context)=>QuestionPage(),
       ShutdownPage.id:(context)=>ShutdownPage(),
-      Settings.id:(context)=>Settings()
+      Settings.id:(context)=>Settings(),
+      Usepage.id:(context)=>Usepage(),
     }
   ));
 }

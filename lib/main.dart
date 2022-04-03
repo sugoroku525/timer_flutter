@@ -10,7 +10,7 @@ import 'pages/stop_page.dart';
 import 'pages/stop2_page.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'pages/settings/use_page.dart';
-
+import 'pages/settings/story_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +28,7 @@ void main() {
       ShutdownPage.id:(context)=>ShutdownPage(),
       Settings.id:(context)=>Settings(),
       Usepage.id:(context)=>Usepage(),
+      Story.id:(context)=>Story(),
     }
   ));
 }

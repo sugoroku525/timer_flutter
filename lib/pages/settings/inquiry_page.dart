@@ -6,8 +6,9 @@ class Inquiry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      backgroundColor: Colors.white,
+ 
       appBar: AppBar(
         title: Text('お問い合わせ'),
       ),

@@ -23,7 +23,6 @@ class Story2 extends StatelessWidget {
       height: myBanner.size.height.toDouble(),
     );
     return Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back),

@@ -23,7 +23,6 @@ class Story extends StatelessWidget {
       height: myBanner.size.height.toDouble(),
     );
     return Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text('制作秘話'),
         ),

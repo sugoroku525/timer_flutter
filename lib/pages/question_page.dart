@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'stop2_page.dart';
-import 'package:stop_flutter/main.dart';
 import 'package:stop_flutter/pages/shutdown_page.dart';
 
 
@@ -52,7 +51,7 @@ class QuestionPage extends StatelessWidget {
               child: TextButton(
                 style: TextButton.styleFrom(backgroundColor: Colors.blue),
                 onPressed:(){
-                  Navigator.pushNamed(context, Stop2.id);
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>Stop2()),(_)=>false);
                 } ,
               child: Text('いいえ',style:TextStyle(color: Colors.white,fontSize: 15),),),
             )

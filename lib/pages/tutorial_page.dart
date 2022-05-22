@@ -10,8 +10,7 @@ class Tutorial extends StatefulWidget {
   State<Tutorial> createState() => _TutorialState();
 }
 
-class _TutorialState extends State<Tutorial> with TickerProviderStateMixin {
-  final GlobalKey<ScaffoldState> _globalKey = new GlobalKey<ScaffoldState>();
+class _TutorialState extends State<Tutorial>  {
   @override
   void initState() {
     super.initState();
@@ -19,7 +18,6 @@ class _TutorialState extends State<Tutorial> with TickerProviderStateMixin {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _globalKey,
         body: OverBoard(
           allowScroll: true,
           pages: pages,

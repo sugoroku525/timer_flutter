@@ -17,15 +17,18 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
-void main() {
+
+Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
+  WidgetsBinding.instance?.addPostFrameCallback((_) async{
+    var prefs = await SharedPreferences.getInstance();  
+     });
   runApp(ChangeNotifierProvider(
     create: (context) => Mytheme(),
-  
     child: Consumer<Mytheme>(builder: (context,theme,_){
       return MaterialApp(
-      theme: theme.current,
+      theme: Provider.of<Mytheme>(context,listen: true).getIsDark()?ThemeData.dark():ThemeData.light(),
       initialRoute: Stop.id,
       routes:{
         Tutorial.id:(context)=>Tutorial(),

@@ -7,7 +7,7 @@ import 'question_page.dart';
 
 
 class Stop2 extends StatefulWidget {
-  static const String id = 'Stop';
+  static const String id = 'Stop2';
   @override
   _Stop2State createState() => _Stop2State();
 }

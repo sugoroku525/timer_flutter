@@ -11,13 +11,13 @@ class Darkmode extends StatefulWidget {
 }
 
 class _DarkmodeState extends State<Darkmode> {
-  @override
+
   void _changeSwitch(bool e) async {
     setState(() {
       Provider.of<Mytheme>(context, listen: false).toggle();
     });
   }
-
+  @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => Mytheme(),
